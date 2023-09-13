@@ -1,14 +1,13 @@
-package pro.sky.java.course2.examinerservice.service.service;
+package pro.sky.java.course2.examinerservice.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.examinerservice.domain.Question;
-import pro.sky.java.course2.examinerservice.service.QuestionService;
 
 import java.util.*;
 @Service
 public class JavaQuestionService implements QuestionService {
     Set<Question> questions = new HashSet<>();
-    quest
+
     @Override
     public Question add(String question, String answer) {
         return add(new Question(question, answer));
