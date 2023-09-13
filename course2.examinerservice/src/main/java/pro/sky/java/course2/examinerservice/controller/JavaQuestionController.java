@@ -13,6 +13,7 @@ import java.util.Collection;
 @RequestMapping("/exam/java")
 
 public class JavaQuestionController {
+
     private final JavaQuestionService javaQuestionService;
 
     public JavaQuestionController(JavaQuestionService javaQuestionService) {
