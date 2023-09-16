@@ -11,19 +11,19 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JavaQuestionServiceTest {
-    JavaQuestionService out = new JavaQuestionService();
+    JavaQuestionService service = new JavaQuestionService();
     @BeforeEach
     public void beforeEach() {
-        out.getAll().clear();
+        service.getAll().clear();
     }
 
     @Test
     void add() {
         Set<Question> set = new HashSet<>();
         set.add(new Question("Question", "Answer"));
-        out.add("Question", "Answer");
-        assertEquals(set, out.getAll());
-        Question result = out.add(new Question("test","test"));
+        service.add("Question", "Answer");
+        assertEquals(set, service.getAll());
+        Question result = service.add(new Question("test","test"));
         Assertions.assertEquals(new Question("test","test"), result);
     }
 
@@ -35,32 +35,32 @@ class JavaQuestionServiceTest {
     void remove() {
         Question q1 = new Question("test", "test");
         Question q2 = new Question("test2", "test2");
-        out.add(q1);
-        out.add(q2);
+        service.add(q1);
+        service.add(q2);
 
-        Question result = out.remove(q1);
-        Assertions.assertNotNull(out);
+        Question result = service.remove(q1);
+        Assertions.assertNotNull(service);
         Assertions.assertEquals(q1, result);
-        Assertions.assertFalse(out.toString().contains(q1.toString()));
+        Assertions.assertFalse(service.toString().contains(q1.toString()));
     }
 
     @Test
     void getAll() {
-        Assertions.assertTrue(out.getAll().isEmpty());
+        Assertions.assertTrue(service.getAll().isEmpty());
         Question q1 = new Question("question", "answer");
         Question q2 = new Question("question2", "answer2");
-        out.add(q1);
-        out.add(q2);
+        service.add(q1);
+        service.add(q2);
         Set<Question> expected = new HashSet<>(Set.of(new Question("question", "answer"),
                 new Question("question2", "answer2")));
-        Assertions.assertEquals(expected, out.getAll());
+        Assertions.assertEquals(expected, service.getAll());
     }
 
     @Test
     void getRandomQuestion() {
         Question q1 = new Question("question", "answer");
-        out.add(q1);
-        Question result = out.getRandomQuestion();
+        service.add(q1);
+        Question result = service.getRandomQuestion();
         Assertions.assertEquals(q1, result);
     }
 }

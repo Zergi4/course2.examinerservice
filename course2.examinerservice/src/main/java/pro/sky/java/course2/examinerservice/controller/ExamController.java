@@ -10,16 +10,16 @@ import java.util.Collection;
 
 @RestController
 public class ExamController {
-    private final ExaminerService examinerService;
+    private final ExaminerService service;
 
     public ExamController(ExaminerService examinerService) {
-        this.examinerService = examinerService;
+        this.service = examinerService;
     }
 
 
     @GetMapping("/exam/get/{amount}")
     public Collection<Question> getQuestions(@PathVariable int amount) {
-        return examinerService.getQuestions(amount);
+        return service.getQuestions(amount);
     }
 
 }

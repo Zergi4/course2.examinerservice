@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pro.sky.java.course2.examinerservice.domain.Question;
 
 import java.util.*;
+
 @Service
 public class JavaQuestionService implements QuestionService {
     Set<Question> questions = new HashSet<>();
@@ -21,8 +22,12 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question remove(Question question) {
-        questions.remove(question);
-        return question;
+        if (questions.remove(question))
+        {
+            return question;
+
+        }
+        return null;
     }
 
     @Override
@@ -35,8 +40,7 @@ public class JavaQuestionService implements QuestionService {
         int size = questions.size();
         int item = new Random().nextInt(size);
         int i = 0;
-        for(Question obj : questions)
-        {
+        for (Question obj : questions) {
             if (i == item)
                 return obj;
             i++;
